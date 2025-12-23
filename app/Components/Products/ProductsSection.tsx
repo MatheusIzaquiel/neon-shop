@@ -19,7 +19,7 @@ const categoryMap: Record<string, string> = {
 };
 
 export default function ProductsSection() {
-  const addItem = useCartStore((state) => state.addItem )
+  const addItem = useCartStore((state) => state.addToCart)
   const [products, setProducts] = useState<Product[]>([]);
 
   const currentCategory = useCategoryStore((state) => state.currentCategory);
