@@ -42,7 +42,7 @@ export default function ProductsSection() {
     } catch (error) {
       console.error("Erro ao buscar produtos:", error);
     }
-  }, []); // tudo certo
+  }, []); 
 
   useEffect(() => {
     async function load() {
@@ -82,7 +82,7 @@ export default function ProductsSection() {
                 </h3>
                 <p className="text-zinc-400 text-sm">{product.price} USD</p>
               </Link>
-              <ShoppingBagIcon className="absolute right-5 bottom-5 text-gray-400 cursor-pointer" onClick={() => addItem(product)}/>
+              <ShoppingBagIcon className="absolute right-5 bottom-5 text-gray-400 cursor-pointer" onClick={() => addItem(product.stock)}/>
             </div>
           ))}
         </div>
