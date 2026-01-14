@@ -6,13 +6,13 @@ import { useCartStore } from "@/Store/useCartStore";
 import { Product } from "@/types/product";
 
 export default function AddToCartButton({ product }: { product: Product }) {
-  const addItem = useCartStore((state) => state.addItem);
+  const addToCart = useCartStore((state) => state.addToCart);
 
   return (
     <Button
       size="lg"
       className="bg-emerald-600 hover:bg-emerald-700"
-      onClick={() => addItem(product)}
+      onClick={() => addToCart(product)}
     >
       <ShoppingCart className="mr-2" />
       Adicionar ao Carrinho

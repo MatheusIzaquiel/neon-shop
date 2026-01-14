@@ -8,4 +8,5 @@ interface CategoryProp {
 export const useCategoryStore = create<CategoryProp>((set) => ({
   currentCategory: "all",
   setCategory: (cat: string) => set({ currentCategory: cat }),
+  
 }));
