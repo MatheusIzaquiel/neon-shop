@@ -14,7 +14,7 @@ import Image from "next/image";
 
 export function CartSheet() {
 
-  const { items, updateQuantity, removeFromCart, addToCart } = useCartStore();
+  const { items, updateQuantity, removeFromCart} = useCartStore();
 
   const total = useCartStore((state) => state.getTotalPrice());
 
@@ -50,15 +50,15 @@ export function CartSheet() {
               className="flex items-center gap-4 bg-zinc-900 p-4 mx-3 rounded-xl border border-zinc-800"
             >
               <Image
-                src={item.imageUrl}
+                src={item.thumbnail}
                 width={70}
                 height={70}
-                alt={item.productName}
+                alt={item.title}
                 className="rounded-lg object-cover"
               />
 
               <div className="flex-1">
-                <h3 className="font-semibold text-sm">{item.productName}</h3>
+                <h3 className="font-semibold text-sm">{item.title}</h3>
                 <p className="text-zinc-400 text-sm">${item.price}</p>
 
                 {/* Quantidade */}

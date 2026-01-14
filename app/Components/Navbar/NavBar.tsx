@@ -6,7 +6,7 @@ import { useCartStore } from "@/Store/useCartStore";
 
 export default function NavBar() {
   const items = useCartStore((state) => state.items);
-  const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
+  const cartItemCount = items.length;
 
   return (
     <nav className="w-full bg-[#0E0E0E] text-white border-b border-zinc-800">
@@ -40,9 +40,9 @@ export default function NavBar() {
 
             <div className="relative">
               <CartSheet />
-              {totalQuantity > 0 && (
+              {cartItemCount > 0 && (
                 <span className="absolute top-4 -right-1 bg-[#6EE7B7] text-black text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  {totalQuantity}
+                  {cartItemCount}
                 </span>
               )}
             </div>
