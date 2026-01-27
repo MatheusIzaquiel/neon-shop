@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Neon-Shop
 
-## Getting Started
+## Visão geral
 
-First, run the development server:
+Este repositório contém a aplicação **Neon-Shop**, construída com **Next.js / React / TypeScript** e configurada com Vercel para deploy, servindo como base para uma loja virtual ou projeto web moderno. O projeto foi iniciado com o template oficial de **create-next-app** e está organizado com as pastas padrão do Next.js, incluindo `app`, `public`, `lib` e `types`. A estrutura permite rápida evolução para funcionalidades de e-commerce, catálogo de produtos, carrinho, páginas estáticas e dinâmicas, e integração com APIs ou backends.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tecnologias
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Neste projeto foram utilizadas as seguintes tecnologias:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js (framework React para aplicações web com SSR/SSG)
+- React
+- TypeScript
+- CSS (configurado via postcss)
+- Vercel (para deploy)
+- Estrutura padrão de pastas do Next.js
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pré-requisitos
 
-## Learn More
+Para executar o projeto localmente é necessário:
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js instalado (preferencialmente versão LTS atual)
+- npm ou yarn como gerenciador de pacotes
+- Editor de código com suporte a TypeScript
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Instalação
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Para clonar e instalar as dependências execute:
 
-## Deploy on Vercel
+git clone https://github.com/MatheusIzaquiel/neon-shop.git
+cd neon-shop
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Isso iniciará o servidor local. Normalmente a aplicação ficará disponível em `http://localhost:3000`, conforme o console log do Next.js.
+
+## Estrutura do projeto
+
+A estrutura principal do projeto inclui:
+
+- **`app/`**: pasta principal do Next.js contendo páginas e layouts da aplicação;
+- **`public/`**: diretório para arquivos estáticos (imagens, ícones, etc);
+- **`lib/`**: código de bibliotecas ou helpers reutilizáveis;
+- **`types/`**: definições de tipos TypeScript;
+- **`next.config.ts`**: arquivo de configuração do Next.js;
+- **`postcss.config.mjs`**: configuração de CSS;
+- **`tsconfig.json`**: configuração do TypeScript.
+
+## Funcionalidades esperadas
+
+Como um projeto base de loja, a aplicação deve contemplar:
+
+- Renderização de páginas estáticas e dinâmicas de produtos;
+- Rotas configuradas com o sistema de navegação do Next.js;
+- Organização de componentes React reutilizáveis;
+- Estilização com PostCSS e suporte a CSS global ou modular;
+- Possibilidade de integrar um backend ou API para catálogo, carrinho e checkout;
+- Suporte a imagens otimizadas e rotas de assets estáticos.
+
+## Adaptação e uso
+
+Esta base é adequada para:
+
+- Desenvolvimento de uma loja online completa com catálogo, filtros e carrinho;
+- Páginas de portfólio ou landing pages com Next.js;
+- Integração com headless CMS, APIs REST ou GraphQL;
+- Evolução para projeto full-stack com API Routes ou backends externos.
+
+## Deploy
+
+A forma mais simples de fazer deploy é utilizando a plataforma **Vercel**, que possui integração nativa com Next.js. Para isso:
+
+1. Conecte o repositório ao Vercel;
+2. Configure as variáveis de ambiente (se necessário);
+3. Faça o deploy automático após push.
+
+O Vercel cuidará da build e do hosting sem configurações adicionais, por padrão.
+
+## Testes e validação
+
+O projeto não possui testes configurados por padrão, mas pode ser estendido com ferramentas como:
+
+- Jest para testes unitários;
+- React Testing Library para testes de componentes;
+- Cypress para testes de ponta a ponta.
+
+## Licença
+
+Consulte o arquivo LICENSE no repositório para detalhes da licença aplicada ao projeto.
+
+## Contribuição
+
+Para contribuir com este projeto, abra issues ou pull requests no GitHub explicando melhorias, correções ou novas funcionalidades.
+
