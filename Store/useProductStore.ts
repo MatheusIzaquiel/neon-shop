@@ -1,6 +1,6 @@
 // src/Store/useProductsStore.ts
 import { create } from "zustand";
-import apiFetch from "@/lib/api";  
+import {getProducts, } from "../lib/dummyjson";  
 
 export type Product = {
   id: number;
@@ -26,8 +26,8 @@ export const useProductsStore = create<ProductsStore>((set) => ({
   fetchProducts: async () => {
     set({ loading: true });
     try {
-      const data = await apiFetch("/api/products?limit=30");
-      set({ products: data.products as Product[] });
+      const data = await getProducts();
+      set({ products: data as Product[] }); 
     } catch (err) {
       console.error("Erro ao carregar produtos:", err);
       set({ products: [] });
@@ -41,12 +41,17 @@ export const useProductsStore = create<ProductsStore>((set) => ({
       await useProductsStore.getState().fetchProducts();
       return;
     }
+
     set({ loading: true });
     try {
-      const data = await apiFetch(`/api/products/search?q=${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/products/search?q=${encodeURIComponent(query)}`);
+      if (!res.ok) throw new Error("Falha na busca");
+      
+      const data = await res.json();
       set({ products: data.products as Product[] });
     } catch (err) {
       console.error("Erro na busca:", err);
+      set({ products: [] }); 
     } finally {
       set({ loading: false });
     }
