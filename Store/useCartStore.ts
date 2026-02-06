@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Product } from "@/types/product"; 
+import { Product } from "../types/product"; 
 
 export type CartItem = {
   id: number;
