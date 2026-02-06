@@ -45,8 +45,6 @@ export default function ProductsSection() {
     fetchProducts(currentCategory || "all");
   }, [currentCategory, fetchProducts]);
 
-  if (loading) return <p className="text-center text-zinc-400 mt-10">Carregando produtos...</p>;
-
   return (
     <section className="w-full bg-[#0E0E0E] pt-10">
       <div className="max-w-7xl mx-auto flex flex-col py-5 px-6">
@@ -55,7 +53,16 @@ export default function ProductsSection() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {loading ? (
+            Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="bg-zinc-900 p-4 rounded-2xl border border-zinc-800 animate-pulse">
+                <div className="w-full h-64 bg-zinc-800 rounded-lg mb-3"></div>
+                <div className="h-6 bg-zinc-800 rounded mb-2"></div>
+                <div className="h-4 bg-zinc-800 rounded w-2/3"></div>
+              </div>
+            ))
+          ) : (
+            products.map((product) => (
             <div
               key={product.id}
               className="bg-zinc-900 p-4 rounded-2xl border border-zinc-800 relative"
@@ -86,7 +93,8 @@ export default function ProductsSection() {
                 onClick={() => addToCart(product)}
               />
             </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>

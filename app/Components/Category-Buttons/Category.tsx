@@ -28,7 +28,10 @@ export default function Category() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {category.map((item, key) => (
             <Card
-              onClick={() => setCategory(item.name)}
+              onClick={(e) => {
+                e.preventDefault();
+                setCategory(item.name);
+              }}
               key={key}
               className="
                 bg-zinc-900 

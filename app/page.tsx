@@ -5,7 +5,7 @@ import ProductsSection from "./Components/Products/ProductsSection";
 
 export default function Home() {
   return (
-    <main className="w-full h-screen bg-[#0E0E0E] ">
+    <main className="w-full bg-[#0E0E0E]">
       <NavBar />
       <Hero />
       <Category />
