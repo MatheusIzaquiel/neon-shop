@@ -12,21 +12,24 @@ import { getProducts, getProductsByCategory } from "@/lib/dummyjson";
 const categoryMap: Record<string, string> = {
   Electronicos: "smartphones",
   Moda: "womens-dresses",
-  "Casa & Decoração": "furniture", 
+  "Casa & Decoração": "furniture",
   Acessórios: "fragrances",
 };
 
 export default function ProductsSection() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);         
+  const [isTransitioning, setIsTransitioning] = useState(false); 
 
   const currentCategory = useCategoryStore((state) => state.currentCategory);
   const addToCart = useCartStore((state) => state.addToCart);
 
   const fetchProducts = useCallback(async (category: string) => {
-    setLoading(true);
+    if (products.length === 0) setLoading(true);
+    setIsTransitioning(true); 
+
     try {
-      let data;
+      let data: Product[];
       if (category === "all" || !categoryMap[category]) {
         data = await getProducts(30);
       } else {
@@ -38,31 +41,47 @@ export default function ProductsSection() {
       setProducts([]);
     } finally {
       setLoading(false);
+      setIsTransitioning(false); 
     }
-  }, []);
+  }, [products.length]); 
 
   useEffect(() => {
     fetchProducts(currentCategory || "all");
   }, [currentCategory, fetchProducts]);
 
+  if (loading && products.length === 0) {
+    return (
+      <section className="w-full bg-[#0E0E0E] pt-10">
+        <div className="max-w-7xl mx-auto flex flex-col py-5 px-6">
+          <h2 className="text-2xl font-bold mb-5 text-[#F5F5F5] tracking-tight">
+            Produtos
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {Array.from({ length: 8 }).map((_, i) => (  
+              <div
+                key={i}
+                className="bg-zinc-900 p-4 rounded-2xl border border-zinc-800 animate-pulse"
+              >
+                <div className="w-full h-64 bg-zinc-800 rounded-lg mb-3"></div>
+                <div className="h-6 bg-zinc-800 rounded mb-2"></div>
+                <div className="h-4 bg-zinc-800 rounded w-2/3"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="w-full bg-[#0E0E0E] pt-10">
+    <section className="w-full bg-[#0E0E0E] pt-10 relative">
       <div className="max-w-7xl mx-auto flex flex-col py-5 px-6">
         <h2 className="text-2xl font-bold mb-5 text-[#F5F5F5] tracking-tight">
           Produtos
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {loading ? (
-            Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="bg-zinc-900 p-4 rounded-2xl border border-zinc-800 animate-pulse">
-                <div className="w-full h-64 bg-zinc-800 rounded-lg mb-3"></div>
-                <div className="h-6 bg-zinc-800 rounded mb-2"></div>
-                <div className="h-4 bg-zinc-800 rounded w-2/3"></div>
-              </div>
-            ))
-          ) : (
-            products.map((product) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 relative">
+          {products.map((product) => (
             <div
               key={product.id}
               className="bg-zinc-900 p-4 rounded-2xl border border-zinc-800 relative"
@@ -93,9 +112,14 @@ export default function ProductsSection() {
                 onClick={() => addToCart(product)}
               />
             </div>
-            ))
-          )}
+          ))}
         </div>
+
+        {isTransitioning && (
+          <div className="absolute inset-0 flex items-center justify-center z-20 rounded-xl">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#6EE7B7]"></div>
+          </div>
+        )}
       </div>
     </section>
   );
