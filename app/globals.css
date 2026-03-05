@@ -121,28 +121,24 @@
   }
 }
 
-/* Custom scrollbar global (dark mode friendly) */
-.custom-scrollbar {
-  scrollbar-width: thin;          /* Firefox */
-  scrollbar-color: #4b5563 #111827;  /* thumb / track - cinza escuro / quase preto */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #18181b transparent;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;                     /* largura fina */
-  height: 6px;
+.scrollbar::-webkit-scrollbar {
+  width: 5px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #111827;            /* track escuro */
-  border-radius: 10px;
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #4b5563;            /* thumb cinza médio */
-  border-radius: 10px;
-  border: 1px solid #111827;      /* borda pra não encostar nas bordas */
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #18181b;
+  border-radius: 999px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #6ee7b7;            /* verde neon no hover - seu tema! */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #27272a;
 }

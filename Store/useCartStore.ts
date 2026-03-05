@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { Product } from "../types/product"; 
 
-export type CartItem = {
+type CartItem = {
   id: number;
   title: string;
   price: number;
@@ -61,3 +61,13 @@ export const useCartStore = create<CartStore>((set, get) => ({
 
   getTotalPrice: () => get().items.reduce((sum, item) => sum + item.price * item.quantity, 0),
 }));
+
+//type CartItem: tipagem dos itens do carrinho
+//type CartStore: tipagem das funções do zustand
+//useCartStore: função que vamos usar para utilizar em outros componentes as funcionalidades do carrinho
+//items: []: é tipado com o CartItem, representa o estado inicial do carrinho, um array vazio
+//addToCart: Adiciona um produto ao carrinho, se já existe → aumenta quantidade, se não existe → adiciona um novo com quantidade 1
+//updateQuantity: Atualiza a quantidade de um item específico, se quantidade ficar <= 0 → remove o item automaticamente, atualiza apenas a quantidade do item desejado
+//removeFromCart: Remove completamente um item do carrinho pelo id
+//clearCart: Limpa todo o carrinho (remove todos os itens)
+//getTotalPrice: Calcula o valor total do carrinho, usa get() porque só precisamos LER o estado atual, valor inicial da soma é 0

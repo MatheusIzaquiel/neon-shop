@@ -8,7 +8,7 @@ export default function SearchComponent() {
     useSearch();
   return (
     <>
-      <div className="hidden md:flex items-center w-full max-w-md bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2 gap-2">
+      <div className="hidden md:flex items-center w-full max-w-md bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2 gap-2 overflow-y-auto z-50 scrollbar">
         <LucideSearch size={20} className="text-zinc-400" />
         <input
           type="text"
@@ -29,7 +29,7 @@ export default function SearchComponent() {
 
       {/* Dropdown de sugestões */}
       {searchTerm.trim() !== "" && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl max-h-96 overflow-y-auto z-50">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl max-h-96 overflow-y-auto z-50 scrollbar ">
           {loading ? (
             <div className="p-4 text-center text-zinc-500">Carregando...</div>
           ) : storeProducts.length === 0 ? (
