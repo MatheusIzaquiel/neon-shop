@@ -1,8 +1,10 @@
 "use client";
-import { LucideHeart, LucideSearch, LucideUser } from "lucide-react";
+import { LucideHeart, LucideUser } from "lucide-react";
 import Link from "next/link";
-import { CartSheet } from "../Cart/CartSheet";
 import { useCartStore } from "@/Store/useCartStore";
+import SearchComponent from "./Navbar_components/SearchComponent";
+import MobileSearchComponent from "./Navbar_components/MobileSerachComponent";
+import { CartSheet } from "./Cart/CartSheet";
 
 export default function NavBar() {
   const items = useCartStore((state) => state.items);
@@ -20,15 +22,7 @@ export default function NavBar() {
             </h1>
           </Link>
           {/* Search Bar */}
-          <div className="hidden md:flex items-center w-full max-w-md bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2 gap-2">
-            <LucideSearch size={20} className="text-zinc-400" />
-            <input
-              type="text"
-              placeholder="Buscar produtos..."
-              className="bg-transparent text-sm flex-1 outline-none placeholder:text-zinc-500"
-            />
-          </div>
-
+          <SearchComponent />
           {/* Icons */}
           <div className="flex items-center gap-6">
             <Link href={"/"}>
@@ -56,18 +50,8 @@ export default function NavBar() {
           </div>
         </div>
       </div>
-
       {/* Mobile search bar */}
-      <div className="md:hidden px-6 pb-4">
-        <div className="flex items-center bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2 gap-2">
-          <LucideSearch size={20} className="text-zinc-400" />
-          <input
-            type="text"
-            placeholder="Buscar produtos..."
-            className="bg-transparent text-sm flex-1 outline-none placeholder:text-zinc-500"
-          />
-        </div>
-      </div>
+      <MobileSearchComponent />
     </nav>
   );
 }
