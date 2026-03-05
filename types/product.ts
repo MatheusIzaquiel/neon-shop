@@ -11,3 +11,5 @@ export interface Product {
   thumbnail: string;
   images: string[];
 }
+
+//interface para tipar os produtos
