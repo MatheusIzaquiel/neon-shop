@@ -19,3 +19,11 @@ export async function getProductsByCategory(category: string) {
   const data = await res.json();
   return data.products;
 }
+// Função para pegar reviews de produtos 
+export async function getReviews(id: string | number) {
+  const res = await fetch(`https://dummyjson.com/products/${id}`);
+  if (!res.ok) throw new Error("Comentários não encontrados");
+  const data = await res.json();
+
+  return data.reviews;
+}
