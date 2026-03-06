@@ -6,9 +6,8 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.dummyjson.com',
         port: '',
-        pathname: '/**', // Permite qualquer caminho sob o hostname
+        pathname: '/**', 
       },
-      // Opcional: adicione também para o domínio base, caso use placeholders ou outros assets
       {
         protocol: 'https',
         hostname: 'dummyjson.com',
@@ -22,4 +21,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; // Use 'export default' se for .mjs
+module.exports = nextConfig; 
