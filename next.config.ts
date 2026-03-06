@@ -17,6 +17,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverExternalPackages: ['pg', '@prisma/adapter-pg', '@prisma/client'],
+  },
 };
 
 module.exports = nextConfig; // Use 'export default' se for .mjs
